@@ -84,6 +84,11 @@ describe('Basic tests', () => {
     const message = await testElementValueAsync('updateString');
     jestExpect(message).toBe('test');
 
+    const wasStartupProcedureStateEverTrue = await testElementValueAsync(
+      'wasStartupProcedureStateEverTrue'
+    );
+    jestExpect(wasStartupProcedureStateEverTrue).toBe('true');
+
     await device.terminateApp();
   });
 });

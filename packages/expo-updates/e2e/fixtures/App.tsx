@@ -49,8 +49,11 @@ export default function App() {
   const [startTime, setStartTime] = React.useState<number | null>(null);
   const [didCheckAndDownloadHappenInParallel, setDidCheckAndDownloadHappenInParallel] =
     React.useState(false);
+  const [wasStartupProcedureStateEverTrue, setWasStartupProcedureStateEverTrue] =
+    React.useState(false);
 
   const {
+    isStartupProcedureRunning,
     currentlyRunning,
     availableUpdate,
     downloadedUpdate,
@@ -59,11 +62,19 @@ export default function App() {
     checkError,
     isChecking,
     isDownloading,
+    isRestarting,
+    restartCount,
   } = Updates.useUpdates();
 
   React.useEffect(() => {
     setStartTime(Date.now());
   }, []);
+
+  React.useEffect(() => {
+    if (isStartupProcedureRunning) {
+      setWasStartupProcedureStateEverTrue(true);
+    }
+  }, [isStartupProcedureRunning]);
 
   // Get rollback state with this, until useUpdates() supports rollbacks
   React.useEffect(() => {
@@ -184,6 +195,10 @@ export default function App() {
       <TestValue testID="isReloading" value={`${isReloading}`} />
       <TestValue testID="startTime" value={`${startTime}`} />
 
+      <TestValue
+        testID="wasStartupProcedureStateEverTrue"
+        value={`${wasStartupProcedureStateEverTrue}`}
+      />
       <TestValue testID="state.isUpdateAvailable" value={`${isUpdateAvailable}`} />
       <TestValue testID="state.isUpdatePending" value={`${isUpdatePending}`} />
       <TestValue testID="state.isRollback" value={`${isRollback}`} />
@@ -200,6 +215,8 @@ export default function App() {
         testID="state.downloadedManifest.id"
         value={`${downloadedUpdate?.manifest?.id || ''}`}
       />
+      <TestValue testID="state.isRestarting" value={`${isRestarting}`} />
+      <TestValue testID="state.restartCount" value={`${restartCount}`} />
 
       <Text>Log messages</Text>
       <ScrollView contentContainerStyle={styles.logEntriesContainer}>
