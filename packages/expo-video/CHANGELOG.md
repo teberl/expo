@@ -8,6 +8,8 @@
 
 ### 🐛 Bug fixes
 
+- Fix safe area insets not updating for native controls on iOS. ([#32864](https://github.com/expo/expo/pull/32864) by [@behenate](https://github.com/behenate))
+
 ### 💡 Others
 
 ## 2.0.0 — 2024-11-11
