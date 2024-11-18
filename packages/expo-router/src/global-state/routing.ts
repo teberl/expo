@@ -131,12 +131,8 @@ export type LinkToOptions = {
   withAnchor?: boolean;
 };
 
-export function linkTo(
-  this: RouterStore,
-  href: string,
-  { event, relativeToDirectory, withAnchor }: LinkToOptions = {}
-) {
-  if (emitDomLinkEvent(href, { event, relativeToDirectory, withAnchor })) {
+export function linkTo(this: RouterStore, href: string, options: LinkToOptions = {}) {
+  if (emitDomLinkEvent(href, options)) {
     return;
   }
 
@@ -169,7 +165,7 @@ export function linkTo(
 
   const rootState = navigationRef.getRootState();
 
-  href = resolveHrefStringWithSegments(href, this.routeInfo, relativeToDirectory);
+  href = resolveHrefStringWithSegments(href, this.routeInfo, options);
 
   const state = this.linking.getStateFromPath!(href, this.linking.config);
 
@@ -178,7 +174,9 @@ export function linkTo(
     return;
   }
 
-  return navigationRef.dispatch(getNavigateAction(state, rootState, event, withAnchor));
+  return navigationRef.dispatch(
+    getNavigateAction(state, rootState, options.event, options.withAnchor)
+  );
 }
 
 function getNavigateAction(

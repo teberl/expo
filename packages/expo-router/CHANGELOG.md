@@ -8,6 +8,8 @@
 
 ### 🐛 Bug fixes
 
+- Fix `useNavigation` hook unable to find parent navigator for hoisted routes and relative hrefs
+
 ### 💡 Others
 
 ## 4.0.6 — 2024-11-15
