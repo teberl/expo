@@ -8,7 +8,7 @@
 
 ### 🐛 Bug fixes
 
-- Fix `useNavigation` hook unable to find parent navigator for hoisted routes and relative hrefs
+- Fix `useNavigation` hook unable to find parent navigator for hoisted routes and relative hrefs ([#33035](https://github.com/expo/expo/pull/33035) by [@marklawlor](https://github.com/marklawlor))
 
 ### 💡 Others
 
