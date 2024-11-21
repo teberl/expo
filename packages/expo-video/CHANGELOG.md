@@ -10,6 +10,8 @@
 
 ### 💡 Others
 
+- Run VideoManager.setAppropriateAudioSessionOrWarn on a different queue for a lower load on the main thread. ([#33127](https://github.com/expo/expo/pull/33127) by [@behenate](https://github.com/behenate))
+
 ## 2.0.1 — 2024-11-19
 
 ### 🐛 Bug fixes
