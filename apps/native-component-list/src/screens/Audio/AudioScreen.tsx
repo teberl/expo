@@ -1,3 +1,4 @@
+import { ExpoJetpackComposeTestView } from 'expo-jetpack-compose-test';
 import { optionalRequire } from '../../navigation/routeBuilder';
 import ComponentListScreen, { ListElement } from '../ComponentListScreen';
 

@@ -21,6 +21,8 @@ buildscript {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
 
     classpath("com.diffplug.spotless:spotless-plugin-gradle:6.23.3")
+
+    
   }
 }
 

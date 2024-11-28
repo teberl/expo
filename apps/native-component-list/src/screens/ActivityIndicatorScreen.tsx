@@ -3,6 +3,7 @@ import { ActivityIndicator, Platform, StyleSheet } from 'react-native';
 
 import { Page, Section } from '../components/Page';
 import Colors from '../constants/Colors';
+import { ExpoJetpackComposeTestView } from 'expo-jetpack-compose-test';
 
 function ActivityIndicatorStopping({ hidesWhenStopped }: { hidesWhenStopped?: boolean }) {
   const [animating, setAnimating] = React.useState(true);
@@ -30,6 +31,7 @@ function ActivityIndicatorStopping({ hidesWhenStopped }: { hidesWhenStopped?: bo
 }
 
 export default function ActivityIndicatorScreen() {
+  return <ExpoJetpackComposeTestView style={{ flex: 1, margin: 100, backgroundColor: 'red' }} />;
   return (
     <Page>
       <Section title="Custom Color" row>

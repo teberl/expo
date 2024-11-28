@@ -63,6 +63,5 @@ export default function Main() {
   }, []);
 
   const isLoaded = useLoaded();
-
   return <ThemeProvider>{isLoaded ? <MainNavigator /> : null}</ThemeProvider>;
 }

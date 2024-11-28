@@ -2,6 +2,7 @@ package dev.expo.payments
 
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.compose.setContent
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
@@ -11,10 +12,17 @@ import com.facebook.react.defaults.DefaultReactActivityDelegate
 import expo.modules.ReactActivityDelegateWrapper
 import expo.modules.splashscreen.SplashScreenManager
 
+import androidx.compose.material3.*
+
 class MainActivity : ReactActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     SplashScreenManager.registerOnActivity(this)
+
+    setContent {
+      Text(text="test")
+    }
     super.onCreate(null)
+
   }
 
   /**
