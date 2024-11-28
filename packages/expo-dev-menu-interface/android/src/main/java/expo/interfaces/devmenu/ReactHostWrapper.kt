@@ -67,16 +67,17 @@ class ReactHostWrapper(reactNativeHost: ReactNativeHost, reactHostProvider: () -
   val jsExecutorName: String
     get() {
       if (isBridgelessMode) {
+        return "Hermes"
         // Access private field using reflection
-        val jsEngineResolutionAlgorithmField: Field = reactHost::class.java.getDeclaredField("mJSEngineResolutionAlgorithm")
-        jsEngineResolutionAlgorithmField.isAccessible = true
-        val jsEngineResolutionAlgorithm = jsEngineResolutionAlgorithmField.get(reactHost) as? JSEngineResolutionAlgorithm
-
-        return if (jsEngineResolutionAlgorithm == JSEngineResolutionAlgorithm.JSC) {
-          "JSC"
-        } else {
-          "Hermes"
-        }
+//        val jsEngineResolutionAlgorithmField: Field = reactHost::class.java.getDeclaredField("mJSEngineResolutionAlgorithm")
+//        jsEngineResolutionAlgorithmField.isAccessible = true
+//        val jsEngineResolutionAlgorithm = jsEngineResolutionAlgorithmField.get(reactHost) as? JSEngineResolutionAlgorithm
+//
+//        return if (jsEngineResolutionAlgorithm == JSEngineResolutionAlgorithm.JSC) {
+//          "JSC"
+//        } else {
+//          "Hermes"
+//        }
       }
 
       return reactNativeHost.reactInstanceManager.jsExecutorName
