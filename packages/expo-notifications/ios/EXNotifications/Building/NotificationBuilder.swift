@@ -5,7 +5,7 @@ import ExpoModulesCore
 @objc(EXNotificationBuilder)
 public class NotificationBuilder: NSObject {
   @objc(notificationContentFromRequest:error:)
-  public func content(_ request: [AnyHashable: Any]) throws -> UNMutableNotificationContent {
+  public func content(_ request: [String: Any]) throws -> UNMutableNotificationContent {
     let content = UNMutableNotificationContent()
 
     if let title: String = try? request.verifiedProperty("title", type: String.self) {
@@ -29,7 +29,7 @@ public class NotificationBuilder: NSObject {
       content.badge = NSNumber.init(value: badge)
     }
 
-    if let userInfo: [AnyHashable: Any] = try? request.verifiedProperty("userInfo", type: [AnyHashable: Any].self) {
+    if let userInfo: [String: Any] = try? request.verifiedProperty("userInfo", type: [String: Any].self) {
       content.userInfo = userInfo
     }
 
@@ -64,7 +64,7 @@ public class NotificationBuilder: NSObject {
     return content
   }
 
-  func attachment(_ request: [AnyHashable: Any]) -> UNNotificationAttachment? {
+  func attachment(_ request: [String: Any]) -> UNNotificationAttachment? {
     let identifier = request["identifier"] as? String ?? ""
     let uri = request["uri"] as? String ?? ""
     do {
@@ -81,8 +81,8 @@ public class NotificationBuilder: NSObject {
     }
   }
 
-  func attachmentOptions(_ request: [AnyHashable: Any]) -> [AnyHashable: Any] {
-    var options: [AnyHashable: Any] = [:]
+  func attachmentOptions(_ request: [String: Any]) -> [String: Any] {
+    var options: [String: Any] = [:]
     if let typeHint = request["typeHint"] as? String {
       options[UNNotificationAttachmentOptionsTypeHintKey] = typeHint
     }

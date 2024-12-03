@@ -1,6 +1,6 @@
 import ExpoModulesCore
 
-public extension [AnyHashable: Any] {
+public extension [String: Any] {
   func verifiedProperty<T>(_ key: String, type: T.Type) throws -> T? {
     let request = self
     if request[key] == nil {
