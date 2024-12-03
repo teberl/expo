@@ -9,6 +9,7 @@
 ### 🐛 Bug fixes
 
 - Use POSIX-formatted relative module paths to stabelize module IDs across platforms.
+- Use POSIX-formatted check to handle virtual RSC module with correctly escaped client boundary paths across platforms.
 
 ### 💡 Others
 
